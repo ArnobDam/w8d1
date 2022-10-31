@@ -2,6 +2,12 @@ require 'rack'
 require_relative '../lib/controller_base'
 
 class MyController < ControllerBase
+  #change_here
+  def render_content(content, content_type = 'text/html')
+    @res.write(content)
+    @res['Content-Type'] = content_type
+end
+
   def go
     if req.path == "/cats"
       render_content("hello cats!", "text/html")
